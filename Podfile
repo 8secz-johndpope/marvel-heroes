@@ -13,6 +13,7 @@ end
 target 'MarvelHeroesKit' do
   
   pod 'Moya/RxSwift'
+  pod 'CryptoSwift'
 
   target 'MarvelHeroesKitTests' do
     inherit! :search_paths

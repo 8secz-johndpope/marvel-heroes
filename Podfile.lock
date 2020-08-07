@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.2.2)
+  - CryptoSwift (1.3.1)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -8,19 +9,22 @@ PODS:
   - RxSwift (5.1.1)
 
 DEPENDENCIES:
+  - CryptoSwift
   - Moya/RxSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CryptoSwift
     - Moya
     - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: e6ab202e94d3192b107711e4ed1c43a64ee65341
+PODFILE CHECKSUM: 901260bb2bb412aa6c2c1ba87594c2af9f4018cd
 
 COCOAPODS: 1.8.4

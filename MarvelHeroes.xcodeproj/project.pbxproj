@@ -13,6 +13,7 @@
 		F41FDEAA24DD521400C50558 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FDEA924DD521400C50558 /* MarvelResponse.swift */; };
 		F41FDEAC24DD531A00C50558 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FDEAB24DD531A00C50558 /* Hero.swift */; };
 		F41FDEAF24DD5A8700C50558 /* StubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FDEAE24DD5A8700C50558 /* StubResponse.swift */; };
+		F41FDEB124DD611700C50558 /* MarvelAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FDEB024DD611700C50558 /* MarvelAuth.swift */; };
 		F473CB1824DC9A4E0064E02A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473CB1724DC9A4E0064E02A /* AppDelegate.swift */; };
 		F473CB1A24DC9A4E0064E02A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473CB1924DC9A4E0064E02A /* SceneDelegate.swift */; };
 		F473CB1C24DC9A4E0064E02A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F473CB1B24DC9A4E0064E02A /* ViewController.swift */; };
@@ -91,6 +92,7 @@
 		F41FDEA924DD521400C50558 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
 		F41FDEAB24DD531A00C50558 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		F41FDEAE24DD5A8700C50558 /* StubResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubResponse.swift; sourceTree = "<group>"; };
+		F41FDEB024DD611700C50558 /* MarvelAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAuth.swift; sourceTree = "<group>"; };
 		F473CB1424DC9A4E0064E02A /* MarvelHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F473CB1724DC9A4E0064E02A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F473CB1924DC9A4E0064E02A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				F473CB5D24DCAEAF0064E02A /* MarvelAPIClient.swift */,
 				F473CB6324DCB7980064E02A /* MarvelEndpoint.swift */,
 				F473CB5F24DCB66B0064E02A /* APIEnvironment.swift */,
+				F41FDEB024DD611700C50558 /* MarvelAuth.swift */,
 			);
 			path = MarvelAPI;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F41FDEB124DD611700C50558 /* MarvelAuth.swift in Sources */,
 				F41FDEAF24DD5A8700C50558 /* StubResponse.swift in Sources */,
 				F41FDEAC24DD531A00C50558 /* Hero.swift in Sources */,
 				F473CB6024DCB66B0064E02A /* APIEnvironment.swift in Sources */,
@@ -771,7 +775,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F473CB5A24DCA0190064E02A /* Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B7Y7RSL394;
@@ -791,7 +794,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F473CB5B24DCA09F0064E02A /* AppStore.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B7Y7RSL394;

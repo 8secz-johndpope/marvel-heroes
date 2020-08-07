@@ -36,7 +36,13 @@ enum MarvelEndpoint: TargetType {
     var task: Task {
         switch self {
         case .heroes:
-            return .requestPlain
+            let ts = "\(Date().timeIntervalSince1970)"
+            let params = [
+                "ts": ts,
+                "apikey": MarvelAuth.publicKey,
+                "hash": MarvelAuth.hash(ts: ts)
+            ]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
