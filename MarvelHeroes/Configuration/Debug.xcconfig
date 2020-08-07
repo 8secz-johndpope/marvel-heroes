@@ -6,5 +6,6 @@
 #include "Pods/Target Support Files/Pods-MarvelHeroes/Pods-MarvelHeroes.debug.xcconfig"
 
 PRODUCT_BUNDLE_IDENTIFIER = com.pbalduz.marvel-heroes.dev
-
 APP_DISPLAY_NAME = Marvel ß
+
+ENV_SWIFT_FLAG = DEVELOP

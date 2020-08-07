@@ -21,6 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         defer { window?.makeKeyAndVisible() }
         window?.windowScene = scene
+        
+        guard NSClassFromString("XCTest") == nil else {
+            window?.rootViewController = UIViewController()
+            return
+        }
+        
         window?.rootViewController = ViewController()
     }
 

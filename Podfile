@@ -11,6 +11,8 @@ target 'MarvelHeroes' do
 end
 
 target 'MarvelHeroesKit' do
+  
+  pod 'Moya/RxSwift'
 
   target 'MarvelHeroesKitTests' do
     inherit! :search_paths
