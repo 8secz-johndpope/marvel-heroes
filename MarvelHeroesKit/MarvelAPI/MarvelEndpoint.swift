@@ -5,48 +5,58 @@
 
 import Moya
 
-enum MarvelEndpoint: TargetType {
-    case heroes
+public enum MarvelEndpoint: TargetType {
+    case heroes(query: String?)
     
-    var baseURL: URL {
+    public var baseURL: URL {
         return MarvelAPIClient.environment.baseURL
     }
     
-    var path: String {
+    public var path: String {
         switch self {
         case .heroes:
-            return ""
+            return "/v1/public/characters"
         }
     }
     
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         case .heroes:
             return .get
         }
     }
     
-    var sampleData: Data {
+    public var sampleData: Data {
         switch self {
         case .heroes:
             return stubResponse(for: "heroes")
         }
     }
     
-    var task: Task {
+    public var task: Task {
         switch self {
-        case .heroes:
-            let ts = "\(Date().timeIntervalSince1970)"
-            let params = [
-                "ts": ts,
-                "apikey": MarvelAuth.publicKey,
-                "hash": MarvelAuth.hash(ts: ts)
-            ]
+        case .heroes(let query):
+            var params = authParams
+            if let query = query {
+                params["nameStartsWith"] = query
+            }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
-    var headers: [String : String]? {
+    public var headers: [String : String]? {
         ["Content-type": "application/json"]
+    }
+}
+
+extension TargetType {
+    
+    var authParams: [String: Any] {
+        let ts = "\(Date().timeIntervalSince1970)"
+        return [
+            "ts": ts,
+            "apikey": MarvelAuth.publicKey,
+            "hash": MarvelAuth.hash(ts: ts)
+        ]
     }
 }

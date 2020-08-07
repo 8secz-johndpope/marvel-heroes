@@ -17,9 +17,11 @@ class MarvelAPIClientTests: XCTestCase {
             XCTFail()
             return
         }
-        _ = apiClient.fetchHeroes().subscribe(onSuccess: { response in
-            XCTAssert(response.results.count == sampleData.results.count)
-            XCTAssert(response.results.first!.name == sampleData.results.first!.name)
+        _ = apiClient.fetchHeroes().subscribe(onSuccess: { heroes in
+            XCTAssert(heroes.count == sampleData.results.count)
+            XCTAssert(heroes.first!.id == sampleData.results.first!.id)
+            XCTAssert(heroes.first!.name == sampleData.results.first!.name)
+            XCTAssert(heroes.first!.description == sampleData.results.first!.description)
         }) { _ in
             XCTFail()
         }

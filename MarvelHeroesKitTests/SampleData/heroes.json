@@ -2,10 +2,22 @@
     "data": {
         "results": [
                 {
-                    "name": "spiderman"
+                    "id": 0,
+                    "name": "spiderman",
+                    "description": "description spiderman",
+                    "thumbnail": {
+                        "path": "path",
+                        "extension": "extension"
+                    }
                 },
                 {
-                    "name": "ironman"
+                    "id": 1,
+                    "name": "ironman",
+                    "description": "description ironman",
+                    "thumbnail": {
+                        "path": "path",
+                        "extension": "extension"
+                    }
                 }
         ]
     }

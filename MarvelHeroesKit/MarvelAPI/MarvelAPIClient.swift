@@ -6,11 +6,11 @@
 import Moya
 import RxSwift
 
-protocol MarvelAPI {
-    func fetchHeroes() -> Single<MarvelResponse<Hero>>
+public protocol MarvelAPI {
+    func fetchHeroes(query: String?) -> Single<[Hero]>
 }
 
-struct MarvelAPIClient {
+public struct MarvelAPIClient {
     static var environment: APIEnvironment {
         #if APPSTORE
         return .production
@@ -21,17 +21,18 @@ struct MarvelAPIClient {
     
     private let provider: MoyaProvider<MarvelEndpoint>
     
-    init(_ provider: MoyaProvider<MarvelEndpoint> = MoyaProvider<MarvelEndpoint>()) {
+    public init(_ provider: MoyaProvider<MarvelEndpoint> = MoyaProvider<MarvelEndpoint>()) {
         self.provider = provider
     }
 }
 
 extension MarvelAPIClient: MarvelAPI {
     
-    func fetchHeroes() -> Single<MarvelResponse<Hero>> {
+    public func fetchHeroes(query: String? = nil) -> Single<[Hero]> {
         provider.rx
-            .request(.heroes)
+            .request(.heroes(query: query))
             .filterSuccessfulStatusCodes()
             .map(MarvelResponse<Hero>.self)
+            .map { $0.results }
     }
 }
