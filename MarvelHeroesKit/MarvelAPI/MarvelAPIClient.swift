@@ -28,11 +28,11 @@ public struct MarvelAPIClient {
 
 extension MarvelAPIClient: MarvelAPI {
     
-    public func fetchHeroes(query: String? = nil) -> Single<[Hero]> {
+    public func fetchHeroes(query: String?) -> Single<[Hero]> {
         provider.rx
             .request(.heroes(query: query))
             .filterSuccessfulStatusCodes()
             .map(MarvelResponse<Hero>.self)
-            .map { $0.results }
+            .map { return $0.results }
     }
 }

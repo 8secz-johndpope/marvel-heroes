@@ -8,10 +8,12 @@
 
 import UIKit
 
+import MarvelHeroesKit
+import RxSwift
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,12 +24,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         defer { window?.makeKeyAndVisible() }
         window?.windowScene = scene
         
-        guard NSClassFromString("XCTest") == nil else {
+        guard !scene.isRunningTests else {
             window?.rootViewController = UIViewController()
             return
         }
         
-        window?.rootViewController = ViewController()
+        let vm = HeroesListViewModel(service: MarvelAPIClient())
+        window?.rootViewController = UINavigationController(rootViewController: HeroesListViewController(viewModel: vm))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

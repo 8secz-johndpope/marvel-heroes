@@ -2,9 +2,15 @@ platform :ios, '13.0'
 use_frameworks!
 
 target 'MarvelHeroes' do
+  
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxDataSources'
 
   target 'MarvelHeroesTests' do
     inherit! :search_paths
+    
+    pod 'SnapshotTesting'
     
   end
 

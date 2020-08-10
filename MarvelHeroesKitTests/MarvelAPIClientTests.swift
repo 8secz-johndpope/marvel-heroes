@@ -17,7 +17,7 @@ class MarvelAPIClientTests: XCTestCase {
             XCTFail()
             return
         }
-        _ = apiClient.fetchHeroes().subscribe(onSuccess: { heroes in
+        _ = apiClient.fetchHeroes(query: nil).subscribe(onSuccess: { heroes in
             XCTAssert(heroes.count == sampleData.results.count)
             XCTAssert(heroes.first!.id == sampleData.results.first!.id)
             XCTAssert(heroes.first!.name == sampleData.results.first!.name)
