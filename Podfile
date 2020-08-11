@@ -6,6 +6,7 @@ target 'MarvelHeroes' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'Kingfisher'
 
   target 'MarvelHeroesTests' do
     inherit! :search_paths

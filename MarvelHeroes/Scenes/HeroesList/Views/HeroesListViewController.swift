@@ -6,6 +6,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import MarvelHeroesKit
 
 class HeroesListViewController: UIViewController {
     
@@ -95,6 +96,17 @@ class HeroesListViewController: UIViewController {
         sections
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        tableView.rx
+            .modelSelected(CellViewModel.self)
+            .subscribe(onNext: { [weak self] model in
+                let vm = HeroDetailViewModel(heroID: model.hero.id, service: MarvelAPIClient())
+                let vc = HeroDetailViewController(viewModel: vm)
+                vc.modalPresentationStyle = .overFullScreen
+                self?.present(vc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
     }
     
     private func setupBindings() {

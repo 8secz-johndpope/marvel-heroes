@@ -8,6 +8,7 @@ import RxSwift
 
 public protocol MarvelAPI {
     func fetchHeroes(query: String?) -> Single<[Hero]>
+    func fetchHeroDetail(heroID: Int) -> Single<HeroDetail>
 }
 
 public struct MarvelAPIClient {
@@ -34,5 +35,13 @@ extension MarvelAPIClient: MarvelAPI {
             .filterSuccessfulStatusCodes()
             .map(MarvelResponse<Hero>.self)
             .map { return $0.results }
+    }
+    
+    public func fetchHeroDetail(heroID: Int) -> Single<HeroDetail> {
+        provider.rx
+            .request(.heroDetail(heroID: heroID))
+            .filterSuccessfulStatusCodes()
+            .map(MarvelResponse<HeroDetail>.self)
+            .map { $0.results.first! }
     }
 }

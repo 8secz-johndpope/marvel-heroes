@@ -14,11 +14,21 @@ public struct Hero: Decodable {
         self.id = id
         self.name = name
         self.description = description
-        self.thumbnail = Thumbnail(path: thumbnail.0, extension: thumbnail.1)
+        self.thumbnail = Thumbnail(path: thumbnail.0, ext: thumbnail.1)
     }
 }
 
 public struct Thumbnail: Decodable {
     public let path: String
     public let `extension`: String
+    
+    public var url: URL? {
+        URL(string: "\(self.path).\(self.extension)")
+    }
+    
+    // for testing purposes
+    public init(path: String, ext: String) {
+        self.path = path
+        self.extension = ext
+    }
 }

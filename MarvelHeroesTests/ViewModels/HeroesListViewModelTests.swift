@@ -15,6 +15,7 @@ class HeroesListViewModelTests: XCTestCase {
     
     
     struct HeroesServiceStub: HeroesService {
+        
         let stub = [
             Hero(id: 0, name: "spiderman", description: "description spiderman", thumbnail: ("", "")),
             Hero(id: 0, name: "spiderman", description: "description spiderman", thumbnail: ("", ""))
@@ -29,19 +30,12 @@ class HeroesListViewModelTests: XCTestCase {
         func fetchHeros(query: String?) -> Single<[Hero]> {
             emptyContent ? .just([]) : .just(stub)
         }
-    }
-    
-    class StateSpy {
-        private(set) var values = [HeroesListViewModel.State]()
-        private let disposeBag = DisposeBag()
         
-        init(_ observable: Observable<HeroesListViewModel.State>) {
-            observable.subscribe(onNext: { [weak self] state in
-                self?.values.append(state)
-            }).disposed(by: disposeBag)
+        func fetchHeroDetail(id: Int) -> Single<HeroDetail> {
+            fatalError()
         }
     }
-
+    
     func testInitialStateEmtpy() {
         let service = HeroesServiceStub()
         let vm = HeroesListViewModel(service: service)
@@ -67,5 +61,5 @@ class HeroesListViewModelTests: XCTestCase {
         XCTAssertEqual(spy.values, [.empty,
                                     .empty
         ])
-    }    
+    }
 }

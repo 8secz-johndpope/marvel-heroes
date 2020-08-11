@@ -7,6 +7,7 @@ import Moya
 
 public enum MarvelEndpoint: TargetType {
     case heroes(query: String?)
+    case heroDetail(heroID: Int)
     
     public var baseURL: URL {
         return MarvelAPIClient.environment.baseURL
@@ -16,12 +17,14 @@ public enum MarvelEndpoint: TargetType {
         switch self {
         case .heroes:
             return "/v1/public/characters"
+        case let .heroDetail(heroID):
+            return "/v1/public/characters/\(heroID)"
         }
     }
     
     public var method: Moya.Method {
         switch self {
-        case .heroes:
+        case .heroes, .heroDetail:
             return .get
         }
     }
@@ -30,6 +33,8 @@ public enum MarvelEndpoint: TargetType {
         switch self {
         case .heroes:
             return stubResponse(for: "heroes")
+        case .heroDetail:
+            return Data()
         }
     }
     
@@ -41,6 +46,8 @@ public enum MarvelEndpoint: TargetType {
                 params["nameStartsWith"] = query
             }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .heroDetail:
+            return .requestParameters(parameters: authParams, encoding: URLEncoding.default)
         }
     }
     
