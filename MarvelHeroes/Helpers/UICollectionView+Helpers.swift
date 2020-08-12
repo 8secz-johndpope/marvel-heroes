@@ -15,14 +15,14 @@ extension ReusableCell {
     }
 }
 
-extension UITableView {
+extension UICollectionView {
     
-    func registerCell<T: UITableViewCell>(_ type: T.Type) where T: ReusableCell {
-        register(type, forCellReuseIdentifier: T.reuseIdentifier)
+    func registerCell<T: UICollectionViewCell>(_ type: T.Type) where T: ReusableCell {
+        register(type, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
-    func dequeueTableViewCell<T: UITableViewCell>(for indexPath: IndexPath) -> T where T: ReusableCell {
-        guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+    func dequeueCollectionViewCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: ReusableCell {
+        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Seems like \(T.self) cell type is not registered")
         }
         return cell

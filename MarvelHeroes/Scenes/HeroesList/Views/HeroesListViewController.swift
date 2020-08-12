@@ -17,7 +17,8 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
     private var viewModel: HeroesListViewModel
     private let disposeBag = DisposeBag()
     
-    private let tableView = UITableView()
+    private lazy var layout = ColumnFlowLayout(containerWidth: view.bounds.size.width)
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private let spinner = UIActivityIndicatorView()
     private let searchController = UISearchController()
     
@@ -38,17 +39,17 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
     override func loadView() {
         super.loadView()
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
         
         spinner.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(spinner)
         
-        let tableViewContraints = [
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let collectionViewContraints = [
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ]
         
         let spinnerConstraints = [
@@ -56,19 +57,26 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
             spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         
-        NSLayoutConstraint.activate(tableViewContraints + spinnerConstraints)
+        NSLayoutConstraint.activate(collectionViewContraints + spinnerConstraints)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Marvel Superheroes"
+        view.backgroundColor = .white
         
         setupSearchController()
-        setupTableView()
+        setupCollectionView()
         setupBindings()
         
         viewModel.loadHeroes()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        layout.containerWidth = view.bounds.size.width
+        layout.columnCount = self.view.traitCollection.horizontalSizeClass == .compact ? 1 : 2
     }
     
     // MARK: - Private
@@ -79,20 +87,21 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
         navigationItem.searchController = searchController
     }
     
-    private func setupTableView() {
-        tableView.registerCell(HeroListCell.self)
-
-        let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: { (dataSource, tableView, indexPath, item) -> UITableViewCell in
-            let cell: HeroListCell = tableView.dequeueTableViewCell(for: indexPath)
+    private func setupCollectionView() {
+        collectionView.backgroundColor = .white
+        collectionView.registerCell(HeroListCell.self)
+        
+        let dataSource = RxCollectionViewSectionedAnimatedDataSource<Section>(configureCell: { dataSource, collectionView, indexPath, item -> UICollectionViewCell in
+            let cell: HeroListCell = collectionView.dequeueCollectionViewCell(for: indexPath)
             cell.setViewModel(item)
             return cell
         })
-        
+
         dataSource.animationConfiguration = AnimationConfiguration(
             insertAnimation: .fade,
             reloadAnimation: .automatic,
             deleteAnimation: .fade)
-        
+
         let sections: Observable<[Section]> = viewModel.state.map { state in
             switch state {
             case .empty:
@@ -105,16 +114,16 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
                 ]
             }
         }
-        
+
         sections
-            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-                
-        let cellSelectionTrigger = Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(CellViewModel.self))
+
+        let cellSelectionTrigger = Observable.zip(collectionView.rx.itemSelected, collectionView.rx.modelSelected(CellViewModel.self))
         cellSelectionTrigger
             .subscribe(onNext: { [weak self] indexPath, model in
                 guard let self = self else { return }
-                self.selectedCell = self.tableView.cellForRow(at: indexPath) as? HeroListCell
+                self.selectedCell = self.collectionView.cellForItem(at: indexPath) as? HeroListCell
                 self.coordinator?.showHeroDetail(id: model.hero.id, transitioningDelegate: self)
             }).disposed(by: disposeBag)
     }

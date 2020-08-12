@@ -6,18 +6,18 @@
 import UIKit
 import Kingfisher
 
-class HeroListCell: UITableViewCell, ReusableCell {
+class HeroListCell: UICollectionViewCell, ReusableCell {
         
     let thumbnailImageView = UIImageView()
     private let nameLabel = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         layout()
         setupViews()
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,6 +30,10 @@ class HeroListCell: UITableViewCell, ReusableCell {
     // MARK: - Private
     
     private func setupViews() {
+        contentView.backgroundColor = UIColor(r: 26, g: 70, b: 128, alpha: 0.5)
+        contentView.layer.cornerRadius = 10
+        contentView.layer.masksToBounds = true
+        nameLabel.numberOfLines = 0
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.clipsToBounds = true
     }
@@ -51,8 +55,7 @@ class HeroListCell: UITableViewCell, ReusableCell {
         ]
         
         let imageViewConstraints = [
-            thumbnailImageView.widthAnchor.constraint(equalTo: thumbnailImageView.heightAnchor),
-            thumbnailImageView.heightAnchor.constraint(equalToConstant: 50)
+            thumbnailImageView.widthAnchor.constraint(equalTo: thumbnailImageView.heightAnchor)
         ]
         
         NSLayoutConstraint.activate(contentStackViewConstraints + imageViewConstraints)

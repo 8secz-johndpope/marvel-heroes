@@ -44,9 +44,11 @@
 		F4D373FD24E07CDA0013B1D0 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D373FC24E07CDA0013B1D0 /* CellViewModel.swift */; };
 		F4DCDB6E24E3DA47008FD3F5 /* HeroListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB6D24E3DA47008FD3F5 /* HeroListCell.swift */; };
 		F4DCDB7324E428CE008FD3F5 /* ImageTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7224E428CE008FD3F5 /* ImageTransitionAnimator.swift */; };
-		F4DCDB7524E42FF6008FD3F5 /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7424E42FF6008FD3F5 /* UITableView+Helpers.swift */; };
+		F4DCDB7524E42FF6008FD3F5 /* UICollectionView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7424E42FF6008FD3F5 /* UICollectionView+Helpers.swift */; };
 		F4DCDB7824E44CB2008FD3F5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7724E44CB2008FD3F5 /* Coordinator.swift */; };
 		F4DCDB7A24E44CD2008FD3F5 /* HeroesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7924E44CD2008FD3F5 /* HeroesCoordinator.swift */; };
+		F4DCDB7C24E49F15008FD3F5 /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7B24E49F15008FD3F5 /* UIColor+Helpers.swift */; };
+		F4DCDB7E24E49F66008FD3F5 /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7D24E49F66008FD3F5 /* ColumnFlowLayout.swift */; };
 		FD8C36ECCF0C85338A07D2BE /* Pods_MarvelHeroesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CF2C8F86C55D40378238C4 /* Pods_MarvelHeroesKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,9 +150,11 @@
 		F4D373FC24E07CDA0013B1D0 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		F4DCDB6D24E3DA47008FD3F5 /* HeroListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListCell.swift; sourceTree = "<group>"; };
 		F4DCDB7224E428CE008FD3F5 /* ImageTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionAnimator.swift; sourceTree = "<group>"; };
-		F4DCDB7424E42FF6008FD3F5 /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
+		F4DCDB7424E42FF6008FD3F5 /* UICollectionView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Helpers.swift"; sourceTree = "<group>"; };
 		F4DCDB7724E44CB2008FD3F5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F4DCDB7924E44CD2008FD3F5 /* HeroesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesCoordinator.swift; sourceTree = "<group>"; };
+		F4DCDB7B24E49F15008FD3F5 /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		F4DCDB7D24E49F66008FD3F5 /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		F60C33517D10B637F6511185 /* Pods_MarvelHeroes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHeroes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -404,7 +408,8 @@
 				F4D373FA24E07C940013B1D0 /* UIActivityIndicatorView+Helpers.swift */,
 				F47C697724E0863900AADBE5 /* UIScene+Helpers.swift */,
 				F46EBD6024E350B60010E744 /* Observable+Helpers.swift */,
-				F4DCDB7424E42FF6008FD3F5 /* UITableView+Helpers.swift */,
+				F4DCDB7424E42FF6008FD3F5 /* UICollectionView+Helpers.swift */,
+				F4DCDB7B24E49F15008FD3F5 /* UIColor+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 			children = (
 				F4D373F324DD95EE0013B1D0 /* HeroesListViewController.swift */,
 				F4DCDB6D24E3DA47008FD3F5 /* HeroListCell.swift */,
+				F4DCDB7D24E49F66008FD3F5 /* ColumnFlowLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -770,7 +776,7 @@
 			files = (
 				F4DCDB7824E44CB2008FD3F5 /* Coordinator.swift in Sources */,
 				F473CB1824DC9A4E0064E02A /* AppDelegate.swift in Sources */,
-				F4DCDB7524E42FF6008FD3F5 /* UITableView+Helpers.swift in Sources */,
+				F4DCDB7524E42FF6008FD3F5 /* UICollectionView+Helpers.swift in Sources */,
 				F47C69FF24E1CE1C00AADBE5 /* HeroDetailViewController.swift in Sources */,
 				F4DCDB6E24E3DA47008FD3F5 /* HeroListCell.swift in Sources */,
 				F46EBD6124E350B60010E744 /* Observable+Helpers.swift in Sources */,
@@ -781,8 +787,10 @@
 				F4DCDB7A24E44CD2008FD3F5 /* HeroesCoordinator.swift in Sources */,
 				F4D373FD24E07CDA0013B1D0 /* CellViewModel.swift in Sources */,
 				F4D373FB24E07C940013B1D0 /* UIActivityIndicatorView+Helpers.swift in Sources */,
+				F4DCDB7C24E49F15008FD3F5 /* UIColor+Helpers.swift in Sources */,
 				F47C69F824E1BC2F00AADBE5 /* HeroDetailViewModel.swift in Sources */,
 				F4D373F824E07B380013B1D0 /* HeroesListViewModel.swift in Sources */,
+				F4DCDB7E24E49F66008FD3F5 /* ColumnFlowLayout.swift in Sources */,
 				F473CB1A24DC9A4E0064E02A /* SceneDelegate.swift in Sources */,
 				F4DCDB7324E428CE008FD3F5 /* ImageTransitionAnimator.swift in Sources */,
 			);
