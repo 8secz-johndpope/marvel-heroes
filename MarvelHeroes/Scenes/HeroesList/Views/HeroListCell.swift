@@ -6,10 +6,8 @@
 import UIKit
 import Kingfisher
 
-class HeroListCell: UITableViewCell {
-    
-    static let ReuseID = "hero-list-cell"
-    
+class HeroListCell: UITableViewCell, ReusableCell {
+        
     let thumbnailImageView = UIImageView()
     private let nameLabel = UILabel()
     

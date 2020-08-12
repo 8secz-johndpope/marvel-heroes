@@ -72,10 +72,10 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
     }
     
     private func setupTableView() {
-        tableView.register(HeroListCell.self, forCellReuseIdentifier: HeroListCell.ReuseID)
+        tableView.registerCell(HeroListCell.self)
 
         let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: { (dataSource, tableView, indexPath, item) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCell(withIdentifier: HeroListCell.ReuseID, for: indexPath) as! HeroListCell
+            let cell: HeroListCell = tableView.dequeueTableViewCell(for: indexPath)
             cell.setViewModel(item)
             return cell
         })
