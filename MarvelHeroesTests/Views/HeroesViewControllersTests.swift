@@ -31,12 +31,12 @@ class HeroesViewControllersTests: XCTestCase {
             .just(detailStub)
         }
     }
-    
+        
     func testViewControllerHeroesList() {
         let vm = HeroesListViewModel(service: HeroesServiceStub())
         let vc = UINavigationController(rootViewController: HeroesListViewController(viewModel: vm))
         
-        assertSnapshot(matching: vc, as: .image, record: true)
+        assertSnapshot(matching: vc, as: .image, record: false)
     }
     
     func testViewControllerHeroDetail() {

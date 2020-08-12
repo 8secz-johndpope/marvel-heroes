@@ -67,11 +67,11 @@ class HeroesListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(HeroListCell.self, forCellReuseIdentifier: HeroListCell.ReuseID)
 
         let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: { (dataSource, tableView, indexPath, item) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = item.hero.name
+            let cell = tableView.dequeueReusableCell(withIdentifier: HeroListCell.ReuseID, for: indexPath) as! HeroListCell
+            cell.setViewModel(item)
             return cell
         })
         

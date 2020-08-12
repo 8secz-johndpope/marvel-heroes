@@ -42,6 +42,7 @@
 		F4D373F824E07B380013B1D0 /* HeroesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D373F724E07B380013B1D0 /* HeroesListViewModel.swift */; };
 		F4D373FB24E07C940013B1D0 /* UIActivityIndicatorView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D373FA24E07C940013B1D0 /* UIActivityIndicatorView+Helpers.swift */; };
 		F4D373FD24E07CDA0013B1D0 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D373FC24E07CDA0013B1D0 /* CellViewModel.swift */; };
+		F4DCDB6E24E3DA47008FD3F5 /* HeroListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB6D24E3DA47008FD3F5 /* HeroListCell.swift */; };
 		FD8C36ECCF0C85338A07D2BE /* Pods_MarvelHeroesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CF2C8F86C55D40378238C4 /* Pods_MarvelHeroesKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		F4D373F724E07B380013B1D0 /* HeroesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesListViewModel.swift; sourceTree = "<group>"; };
 		F4D373FA24E07C940013B1D0 /* UIActivityIndicatorView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Helpers.swift"; sourceTree = "<group>"; };
 		F4D373FC24E07CDA0013B1D0 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		F4DCDB6D24E3DA47008FD3F5 /* HeroListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListCell.swift; sourceTree = "<group>"; };
 		F60C33517D10B637F6511185 /* Pods_MarvelHeroes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHeroes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				F4D373F324DD95EE0013B1D0 /* HeroesListViewController.swift */,
+				F4DCDB6D24E3DA47008FD3F5 /* HeroListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 			files = (
 				F473CB1824DC9A4E0064E02A /* AppDelegate.swift in Sources */,
 				F47C69FF24E1CE1C00AADBE5 /* HeroDetailViewController.swift in Sources */,
+				F4DCDB6E24E3DA47008FD3F5 /* HeroListCell.swift in Sources */,
 				F46EBD6124E350B60010E744 /* Observable+Helpers.swift in Sources */,
 				F4D373F424DD95EE0013B1D0 /* HeroesListViewController.swift in Sources */,
 				F47C697824E0863900AADBE5 /* UIScene+Helpers.swift in Sources */,
