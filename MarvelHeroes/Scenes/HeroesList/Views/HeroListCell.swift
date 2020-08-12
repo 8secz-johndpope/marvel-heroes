@@ -13,7 +13,9 @@ class HeroListCell: UITableViewCell, ReusableCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         layout()
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -23,6 +25,11 @@ class HeroListCell: UITableViewCell, ReusableCell {
     func setViewModel(_ vm: CellViewModel) {
         nameLabel.text = vm.hero.name
         thumbnailImageView.kf.setImage(with: vm.hero.thumbnail.url)
+    }
+    
+    private func setupViews() {
+        thumbnailImageView.contentMode = .scaleAspectFill
+        thumbnailImageView.clipsToBounds = true
     }
     
     private func layout() {

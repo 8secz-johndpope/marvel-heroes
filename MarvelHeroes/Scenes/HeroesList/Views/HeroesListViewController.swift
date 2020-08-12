@@ -55,9 +55,6 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
         ]
         
         NSLayoutConstraint.activate(tableViewContraints + spinnerConstraints)
-        
-        searchController.searchBar.placeholder = "Search for superheroes"
-        navigationItem.searchController = searchController
     }
     
     override func viewDidLoad() {
@@ -65,10 +62,17 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
         
         title = "Marvel Superheroes"
         
+        setupSearchController()
         setupTableView()
         setupBindings()
         
         viewModel.loadHeroes()
+    }
+    
+    private func setupSearchController() {
+        searchController.searchBar.placeholder = "Search for superheroes"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     private func setupTableView() {

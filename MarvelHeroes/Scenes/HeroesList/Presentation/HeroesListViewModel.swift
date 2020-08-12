@@ -15,7 +15,7 @@ struct HeroesListViewModel {
     }
     
     let isLoading = BehaviorRelay<Bool>(value: false)
-    let filterText = BehaviorRelay<String?>(value: nil)
+    let filterText = PublishRelay<String?>()
     
     private let service: HeroesService
     

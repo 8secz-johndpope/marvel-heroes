@@ -79,8 +79,6 @@ class HeroDetailViewController: StretchyHeaderViewController, ImageTransitionAni
         descriptionLabel.numberOfLines = 0
         
         viewModel.loadDetail()
-        
-        headerImageView.kf.setImage(with: URL.init(fileURLWithPath: "http:/i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec.jpg"))
     }
     
     private func setupContentView() {

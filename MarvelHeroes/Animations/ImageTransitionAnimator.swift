@@ -20,7 +20,7 @@ protocol ImageTransitionAnimatorDelegate {
 
 final class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    private let duration = 1.5
+    private let duration = 0.5
     private let kind: TransitionKind
     private let presentingDelegate: ImageTransitionAnimatorDelegate
     private let presentedDelegate: ImageTransitionAnimatorDelegate
@@ -67,6 +67,10 @@ final class ImageTransitionAnimator: NSObject, UIViewControllerAnimatedTransitio
         let backgroundView: UIView
         let fadeView = UIView(frame: containerView.frame)
         fadeView.backgroundColor = .white
+        
+        if isPresenting {
+            presentedDelegate.transitionImageView?.image = presentingDelegate.transitionImageView?.image
+        }
         
         if isPresenting {
             imageViewSnapshot = presentingImageViewSnapshot

@@ -44,6 +44,8 @@ public enum MarvelEndpoint: TargetType {
             var params = authParams
             if let query = query {
                 params["nameStartsWith"] = query
+            } else {
+                params["offset"] = Int.random(in: 0..<500)
             }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .heroDetail:
