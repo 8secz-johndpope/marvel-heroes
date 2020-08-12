@@ -7,7 +7,7 @@ import UIKit
 import RxSwift
 import Kingfisher
 
-class HeroDetailViewController: StretchyHeaderViewController {
+class HeroDetailViewController: StretchyHeaderViewController, ImageTransitionAnimatorDelegate {
     
     private var viewModel: HeroDetailViewModel
     private let disposeBag = DisposeBag()
@@ -16,6 +16,10 @@ class HeroDetailViewController: StretchyHeaderViewController {
     private let descriptionLabel = UILabel()
     private let spinner = UIActivityIndicatorView()
     private let closeButton = UIButton(type: .system)
+        
+    var transitionImageView: UIImageView? {
+        headerImageView
+    }
     
     init(viewModel: HeroDetailViewModel) {
         self.viewModel = viewModel

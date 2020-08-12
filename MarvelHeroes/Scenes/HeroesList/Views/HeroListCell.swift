@@ -10,7 +10,7 @@ class HeroListCell: UITableViewCell {
     
     static let ReuseID = "hero-list-cell"
     
-    private let thumbnailImageView = UIImageView()
+    let thumbnailImageView = UIImageView()
     private let nameLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

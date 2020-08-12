@@ -8,7 +8,7 @@ import RxSwift
 import RxDataSources
 import MarvelHeroesKit
 
-class HeroesListViewController: UIViewController {
+class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegate {
     
     typealias Section = AnimatableSectionModel<String, CellViewModel>
     
@@ -19,6 +19,11 @@ class HeroesListViewController: UIViewController {
     private let spinner = UIActivityIndicatorView()
     private let searchController = UISearchController()
     
+    var transitionImageView: UIImageView? {
+        selectedCell?.thumbnailImageView
+    }
+    var selectedCell: HeroListCell?
+        
     init(viewModel: HeroesListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -60,13 +65,13 @@ class HeroesListViewController: UIViewController {
         
         title = "Marvel Superheroes"
         
-        setupCollectionView()
+        setupTableView()
         setupBindings()
         
         viewModel.loadHeroes()
     }
     
-    private func setupCollectionView() {
+    private func setupTableView() {
         tableView.register(HeroListCell.self, forCellReuseIdentifier: HeroListCell.ReuseID)
 
         let dataSource = RxTableViewSectionedAnimatedDataSource<Section>(configureCell: { (dataSource, tableView, indexPath, item) -> UITableViewCell in
@@ -96,21 +101,38 @@ class HeroesListViewController: UIViewController {
         sections
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-        tableView.rx
-            .modelSelected(CellViewModel.self)
-            .subscribe(onNext: { [weak self] model in
+                
+        let cellSelectionTrigger = Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(CellViewModel.self))
+        cellSelectionTrigger
+            .subscribe(onNext: { [weak self] indexPath, model in
                 let vm = HeroDetailViewModel(heroID: model.hero.id, service: MarvelAPIClient())
                 let vc = HeroDetailViewController(viewModel: vm)
-                vc.modalPresentationStyle = .overFullScreen
+                vc.modalPresentationStyle = .custom
+                vc.transitioningDelegate = self
+                self?.selectedCell = self?.tableView.cellForRow(at: indexPath) as? HeroListCell
                 self?.present(vc, animated: true, completion: nil)
-            })
-            .disposed(by: disposeBag)
-
+            }).disposed(by: disposeBag)
     }
     
     private func setupBindings() {
         viewModel.isLoading.bind(to: spinner.rx.run).disposed(by: disposeBag)
         searchController.searchBar.rx.text.bind(to: viewModel.filterText).disposed(by: disposeBag)
+    }
+}
+
+extension HeroesListViewController: UIViewControllerTransitioningDelegate {
+        
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let presentedVC = presented as? HeroDetailViewController else {
+            return nil
+        }
+        return ImageTransitionAnimator(kind: .presentation, presentingDelegate: self, presentedDelegate: presentedVC)
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let presentedVC = dismissed as? HeroDetailViewController else {
+            return nil
+        }
+        return ImageTransitionAnimator(kind: .dismissal, presentingDelegate: self, presentedDelegate: presentedVC)
     }
 }
