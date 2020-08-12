@@ -38,7 +38,7 @@ struct HeroesListViewModel {
         
     private func filter() -> Observable<State> {
         filterText
-            .skip(1)
+            .distinctUntilChanged()
             .flatMap { [isLoading, service] query -> Observable<[Hero]> in
                 isLoading.accept(true)
                 let searchQuery = query == "" ? nil : query
