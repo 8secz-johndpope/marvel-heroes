@@ -81,6 +81,8 @@ class HeroDetailViewController: StretchyHeaderViewController, ImageTransitionAni
         viewModel.loadDetail()
     }
     
+    // MARK: - Private
+    
     private func setupContentView() {
         view.backgroundColor = .white
         contentView.backgroundColor = .white

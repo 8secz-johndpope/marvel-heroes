@@ -33,6 +33,8 @@ struct HeroesListViewModel {
     func loadHeroes() {
         filterText.accept(nil)
     }
+    
+    // MARK: - Private
         
     private func filter() -> Observable<State> {
         filterText

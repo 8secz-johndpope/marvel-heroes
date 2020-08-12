@@ -45,6 +45,8 @@ struct HeroDetailViewModel {
         load.accept(())
     }
     
+    // MARK: - Private
+    
     private func loadContent() -> Observable<State> {
         load
             .flatMap { [isLoading, service, heroID] _ -> Observable<HeroDetail> in

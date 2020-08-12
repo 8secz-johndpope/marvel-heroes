@@ -12,6 +12,8 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
     
     typealias Section = AnimatableSectionModel<String, CellViewModel>
     
+    weak var coordinator: HeroesCoordinator?
+    
     private var viewModel: HeroesListViewModel
     private let disposeBag = DisposeBag()
     
@@ -69,6 +71,8 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
         viewModel.loadHeroes()
     }
     
+    // MARK: - Private
+    
     private func setupSearchController() {
         searchController.searchBar.placeholder = "Search for superheroes"
         searchController.obscuresBackgroundDuringPresentation = false
@@ -109,12 +113,9 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
         let cellSelectionTrigger = Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(CellViewModel.self))
         cellSelectionTrigger
             .subscribe(onNext: { [weak self] indexPath, model in
-                let vm = HeroDetailViewModel(heroID: model.hero.id, service: MarvelAPIClient())
-                let vc = HeroDetailViewController(viewModel: vm)
-                vc.modalPresentationStyle = .custom
-                vc.transitioningDelegate = self
-                self?.selectedCell = self?.tableView.cellForRow(at: indexPath) as? HeroListCell
-                self?.present(vc, animated: true, completion: nil)
+                guard let self = self else { return }
+                self.selectedCell = self.tableView.cellForRow(at: indexPath) as? HeroListCell
+                self.coordinator?.showHeroDetail(id: model.hero.id, transitioningDelegate: self)
             }).disposed(by: disposeBag)
     }
     
@@ -123,6 +124,8 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
         searchController.searchBar.rx.text.bind(to: viewModel.filterText).disposed(by: disposeBag)
     }
 }
+
+// MARK: - UIViewControllerTransitioningDelegate
 
 extension HeroesListViewController: UIViewControllerTransitioningDelegate {
         

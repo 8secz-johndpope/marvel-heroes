@@ -27,6 +27,8 @@ class HeroListCell: UITableViewCell, ReusableCell {
         thumbnailImageView.kf.setImage(with: vm.hero.thumbnail.url)
     }
     
+    // MARK: - Private
+    
     private func setupViews() {
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.clipsToBounds = true
