@@ -25,7 +25,7 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
     var transitionImageView: UIImageView? {
         selectedCell?.thumbnailImageView
     }
-    var selectedCell: HeroListCell?
+    private var selectedCell: HeroListCell?
         
     init(viewModel: HeroesListViewModel) {
         self.viewModel = viewModel
@@ -75,7 +75,7 @@ class HeroesListViewController: UIViewController, ImageTransitionAnimatorDelegat
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        layout.containerWidth = view.bounds.size.width
+        layout.containerWidth = view.safeAreaLayoutGuide.layoutFrame.size.width
         layout.columnCount = self.view.traitCollection.horizontalSizeClass == .compact ? 1 : 2
     }
     
