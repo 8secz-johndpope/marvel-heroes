@@ -71,12 +71,7 @@ class HeroDetailViewController: StretchyHeaderViewController, ImageTransitionAni
         
         setupContentView()
         setupBindings()
-        
-        closeButton.setImage(UIImage(named: "close")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        closeButton.tintColor = .black
-        nameLabel.numberOfLines = 0
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 32)
-        descriptionLabel.numberOfLines = 0
+        styleViews()
         
         viewModel.loadDetail()
     }
@@ -85,12 +80,14 @@ class HeroDetailViewController: StretchyHeaderViewController, ImageTransitionAni
     
     private func setupContentView() {
         view.backgroundColor = .white
-        contentView.backgroundColor = .white
-        contentView.backgroundColor = .white
         contentViewTopOffset = 20
-        contentView.layer.cornerRadius = 20
-        contentView.layer.masksToBounds = true
-        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    private func styleViews() {
+        closeButtonStyle(closeButton)
+        titleLabelStyle(nameLabel)
+        bodyLabelStyle(descriptionLabel)
+        heroDetailContentViewStyle(contentView)
     }
     
     private func setupBindings() {

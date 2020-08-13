@@ -15,7 +15,7 @@ class HeroListCell: UICollectionViewCell, ReusableCell {
         super.init(frame: frame)
         
         layout()
-        setupViews()
+        styleViews()
     }
         
     required init?(coder: NSCoder) {
@@ -29,13 +29,10 @@ class HeroListCell: UICollectionViewCell, ReusableCell {
     
     // MARK: - Private
     
-    private func setupViews() {
-        contentView.backgroundColor = UIColor(r: 26, g: 70, b: 128, alpha: 0.5)
-        contentView.layer.cornerRadius = 10
-        contentView.layer.masksToBounds = true
-        nameLabel.numberOfLines = 0
-        thumbnailImageView.contentMode = .scaleAspectFill
-        thumbnailImageView.clipsToBounds = true
+    private func styleViews() {        
+        heroListCellBackgroundStyle(contentView)
+        multipleLinesLabelStyle(nameLabel)
+        contentModeImageViewStyle(.scaleAspectFill)(thumbnailImageView)
     }
     
     private func layout() {
