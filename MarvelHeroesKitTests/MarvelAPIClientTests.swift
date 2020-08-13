@@ -26,4 +26,18 @@ class MarvelAPIClientTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testFetchHeroDetail() {
+        guard let sampleData = try? JSONDecoder().decode(MarvelResponse<HeroDetail>.self, from: stubResponse(for: "hero-detail")) else {
+            XCTFail()
+            return
+        }
+        _ = apiClient.fetchHeroDetail(heroID: 0).subscribe(onSuccess: { hero in
+            XCTAssert(hero.id == sampleData.results.first!.id)
+            XCTAssert(hero.name == sampleData.results.first!.name)
+            XCTAssert(hero.description == sampleData.results.first!.description)
+        }) { _ in
+            XCTFail()
+        }
+    }
 }

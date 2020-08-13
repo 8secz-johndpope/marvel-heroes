@@ -1,0 +1,15 @@
+{
+    "data": {
+        "results": [
+                {
+                    "id": 0,
+                    "name": "spiderman",
+                    "description": "description spiderman",
+                    "thumbnail": {
+                        "path": "path",
+                        "extension": "extension"
+                    }
+                }
+        ]
+    }
+}

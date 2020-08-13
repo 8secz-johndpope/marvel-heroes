@@ -51,6 +51,7 @@
 		F4DCDB7E24E49F66008FD3F5 /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB7D24E49F66008FD3F5 /* ColumnFlowLayout.swift */; };
 		F4DCDB8124E5284E008FD3F5 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB8024E5284E008FD3F5 /* Operators.swift */; };
 		F4DCDB8324E53D18008FD3F5 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DCDB8224E53D18008FD3F5 /* Styles.swift */; };
+		F4DCDB8624E54F21008FD3F5 /* hero-detail.json in Resources */ = {isa = PBXBuildFile; fileRef = F4DCDB8424E54DD8008FD3F5 /* hero-detail.json */; };
 		FD8C36ECCF0C85338A07D2BE /* Pods_MarvelHeroesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CF2C8F86C55D40378238C4 /* Pods_MarvelHeroesKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +160,7 @@
 		F4DCDB7D24E49F66008FD3F5 /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		F4DCDB8024E5284E008FD3F5 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		F4DCDB8224E53D18008FD3F5 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		F4DCDB8424E54DD8008FD3F5 /* hero-detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "hero-detail.json"; sourceTree = "<group>"; };
 		F60C33517D10B637F6511185 /* Pods_MarvelHeroes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelHeroes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				F4ADAD8D24DD44400046A517 /* heroes.json */,
+				F4DCDB8424E54DD8008FD3F5 /* hero-detail.json */,
 			);
 			path = SampleData;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4DCDB8624E54F21008FD3F5 /* hero-detail.json in Resources */,
 				F4ADAD8E24DD44400046A517 /* heroes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

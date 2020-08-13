@@ -34,7 +34,7 @@ public enum MarvelEndpoint: TargetType {
         case .heroes:
             return stubResponse(for: "heroes")
         case .heroDetail:
-            return Data()
+            return stubResponse(for: "hero-detail")
         }
     }
     
